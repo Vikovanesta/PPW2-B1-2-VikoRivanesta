@@ -155,10 +155,10 @@ class PostController extends Controller
      * @param  mixed $post
      * @return void
      */
-    public function destroy($post): RedirectResponse
+    public function destroy(Post $post): RedirectResponse
     {
         //get post by ID
-        $post = Post::findOrFail();
+        $post = Post::findOrFail($post->id);
 
         //delete image
         Storage::delete('public/posts/'. $post->image);
